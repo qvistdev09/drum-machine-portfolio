@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.min100vh {
+  min-height: 100vh;
+}
+
+.sound-btn {
+  width: 3rem;
+  height: 3rem;
+}
