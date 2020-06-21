@@ -20,3 +20,7 @@ code {
   width: 3rem;
   height: 3rem;
 }
+
+.card-max {
+  max-width: 27rem;
+}
