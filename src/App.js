@@ -6,11 +6,24 @@ class App extends React.Component {
     super(props);
     this.state = {
       soundLabel: 'Sound',
-      kit: 'kit1',
+      kit: 'Heater Kit',
       volume: 0.5,
     };
     this.playSound = this.playSound.bind(this);
     this.sliderChange = this.sliderChange.bind(this);
+    this.toggleKit = this.toggleKit.bind(this);
+  }
+
+  toggleKit() {
+    if (this.state.kit !== 'Smooth Piano Kit') {
+      this.setState({
+        kit: 'Smooth Piano Kit',
+      });
+    } else {
+      this.setState({
+        kit: 'Heater Kit',
+      });
+    }
   }
 
   sliderChange(e) {
@@ -104,17 +117,45 @@ class App extends React.Component {
                   </div>
                 </div>
                 <div className="col-sm">
-                  <p>{this.state.soundLabel}</p>
-                  <label htmlFor="volume">Volume</label>
-                  <input
-                    type="range"
-                    id="volume"
-                    name="volume"
-                    min="0"
-                    max="100"
-                    value={this.state.volume * 100}
-                    onChange={this.sliderChange}
-                  />
+                  <div className="row mb-2 mt-2 mt-sm-0">
+                    <div className="col">
+                      <div className="card">
+                        <div className="card-body p-1">
+                          {this.state.soundLabel}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row mb-2">
+                    <div className="col">
+                      <div className="card">
+                        <div className="card-body p-1">
+                          <label htmlFor="volume" className="d-block">
+                            Volume
+                          </label>
+                          <input
+                            type="range"
+                            id="volume"
+                            name="volume"
+                            min="0"
+                            max="100"
+                            value={this.state.volume * 100}
+                            onChange={this.sliderChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col">
+                      <div className="card">
+                        <div className="card-body p-1">
+                          <p>{this.state.kit}</p>
+                          <ToggleSwitch toggleKit={this.toggleKit} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </DrumMachineCard>
@@ -173,6 +214,15 @@ function DrumMachineCard(props) {
       <div className="card-body">{props.children}</div>
       <div className="card-footer text-muted">by Qvistsson</div>
     </div>
+  );
+}
+
+function ToggleSwitch(props) {
+  return (
+    <label className="kit-switch">
+      <input type="checkbox" onClick={props.toggleKit} />
+      <span className="slider round"></span>
+    </label>
   );
 }
 
