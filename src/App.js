@@ -239,11 +239,11 @@ function DrumMachineCard(props) {
       <div className="card-footer text-muted">
         by{' '}
         <a
-          href="https://github.com/qvistsson"
+          href="https://github.com/qvistdev09"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Qvistsson
+          qvistdev09
         </a>
       </div>
     </div>
